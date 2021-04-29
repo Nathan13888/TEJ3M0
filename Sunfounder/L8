@@ -1,0 +1,26 @@
+#include <LiquidCrystal.h>
+
+// not sure why they were using char[] before, strings made much more sense and basically do the same thing anyways
+String a = "The Sunfounder website has so many problems... >:(";
+
+#define DELAY 200
+
+LiquidCrystal lcd(4, 6, 10, 11, 12, 13);
+
+void setup()
+{ // the sunfounder code literally didn't include this
+    lcd.begin(16, 2);
+    lcd.setCursor(0, 0);
+    lcd.print("So... uhh?");
+}
+
+void loop() // the previous loops were very messy...
+{
+    for (int i = 0; i < a.length(); i++)
+    {
+        lcd.setCursor(0,1);
+        lcd.print(a.substring(i));
+        delay(DELAY);
+    }
+    lcd.clear();
+}

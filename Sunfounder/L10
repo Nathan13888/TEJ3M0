@@ -1,0 +1,67 @@
+// Rewrote the program because the code from Sun founder
+// was full of bugs and was horrendously formatted :(
+// - Nathan
+
+#define pinA 6
+#define pinB 7
+#define pinC 5
+#define pinD 10
+#define pinE 11
+#define pinF 8
+#define pinG 9
+#define DELAY 500
+
+// replaced all the individual functions with an array of different numbers
+const int num[][7]={
+  {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,LOW},
+  {LOW,HIGH,HIGH,LOW,LOW,LOW,LOW},
+  {HIGH,HIGH,LOW,HIGH,HIGH,LOW,HIGH},
+  {HIGH,HIGH,HIGH,HIGH,LOW,LOW,HIGH},
+  {LOW,HIGH,HIGH,LOW,LOW,HIGH,HIGH},
+  {HIGH,LOW,HIGH,HIGH,LOW,HIGH,HIGH},
+  {HIGH,LOW,HIGH,HIGH,HIGH,HIGH,HIGH},
+  {HIGH,HIGH,HIGH,LOW,LOW,LOW,LOW},
+  {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH},
+  {HIGH,HIGH,HIGH,HIGH,LOW,HIGH,HIGH}
+};
+  
+
+void setup()
+{
+  // initialize the digital pins as outputs.
+  pinMode(pinA, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  pinMode(pinC, OUTPUT);
+  pinMode(pinD, OUTPUT);
+  pinMode(pinE, OUTPUT);
+  pinMode(pinF, OUTPUT);
+  pinMode(pinG, OUTPUT);
+}
+
+void segmentWrite(int a, int b, int c, int d, int e, int f, int g)
+{
+  digitalWrite(pinA, a);
+  digitalWrite(pinB, b);
+  digitalWrite(pinC, c);
+  digitalWrite(pinD, d);
+  digitalWrite(pinE, e);
+  digitalWrite(pinF, f);
+  digitalWrite(pinG, g);
+}
+
+void loop()
+{
+  // Count down
+  for(int i=9; i>=0;i--)
+  {
+    segmentWrite(num[i][0],num[i][1],num[i][2],num[i][3],num[i][4],num[i][5],num[i][6]);
+    delay(DELAY);
+  }
+  
+  // Count up
+  for(int i=0; i<10;i++)
+  {
+    segmentWrite(num[i][0],num[i][1],num[i][2],num[i][3],num[i][4],num[i][5],num[i][6]);
+    delay(DELAY);
+  }
+}

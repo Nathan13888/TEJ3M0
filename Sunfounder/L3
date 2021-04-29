@@ -1,0 +1,24 @@
+// YIKES! there were tonnes of small bugs and typos everywhere >:/
+// the formatting was also basically non-existent
+
+const int ledPin = 9;
+
+void setup()
+{
+    pinMode(ledPin, OUTPUT); // declare pin 9 to be an output
+}
+
+void loop()
+{
+    for (int a = 0; a <= 255; a++)
+    {
+        analogWrite(ledPin, a);
+        delay(8);
+    }
+    for (int b = 255; b >= 0; b--)
+    {
+        analogWrite(ledPin, b);
+        delay(8);
+    }
+    delay(800); //wait for 800 ms
+}
